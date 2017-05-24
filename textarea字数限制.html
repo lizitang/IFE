@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js输入框限制</title>
+    <style>
+        .nav{
+            width:303px;
+            height:30px;
+            line-height:30px;
+        }
+        .left{
+            width:50%;
+            float:left;
+        }
+        .right{
+            width:50%;
+            float:right;
+            text-indent:90px;
+        }
+        .ll{
+            color:red;
+        }
+        .star{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<div id='container'>
+    <div class='nav'>
+        <div class='left'>
+            <span class='star'>*</span>
+            <span>请输入备注</span>
+        </div>
+        <div class='right'>
+            (<span class='hh'>0</span>/200)
+        </div>
+    </div>
+    <textarea name="message" id="content" cols="40" rows="5"></textarea>
+</div>
+<script src='jquery-1.12.4.js'></script>
+<script>
+    $(function(){
+        $("#content").keyup(function(){
+            var len = $(this).val().length;
+            if(len>200){
+                $xx=$("<span class='ll'>亲，您的字数超出限制了!</span>");
+                $("#container").append($xx);
+            }
+            var num = len;
+            $(".hh").text(num);
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

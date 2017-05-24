@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// function _parseInt(str){
+		// 	var arr=str.split(''),
+		// 		arr1=[],
+		// 		index=true,
+		// 		len=arr.length,
+		// 		num=0;
+		// 	for(var i=0;i<len&&index;i++){
+		// 		if((arr[i]*1)==(arr[i]*1)){
+		// 			arr1.push(arr[i]);
+		// 		}else{
+		// 			index=false;
+		// 		}
+		// 	}	
+		// 	var len1=arr1.length;
+		// 	for(var j=0;j<len1;j++){
+		// 		var digit=Math.pow(10,(len1-j-1));
+		// 		num +=(arr1[j]*digit);	
+		// 	}
+		// 	return num;
+		// }
+
+
+  	/*function _parseInt(str) {*/
+    /*var newArr = str.split(''), i = 0;
+    for(; i < newArr.length; i++){
+        if(isNaN(newArr[i])){
+            break;
+        }
+    }
+    return newArr.slice(0, i).join('') || 0;
+	}
+		console.log(_parseInt('12.11'));
+		console.log(_parseInt('12313fsdf'));
+		console.log(_parseInt('fsdf1235'));
+		console.log(_parseInt('123fsdf21'));
+		console.log(_parseInt('123.13fsfd'));
+		nsole.log(_parseInt('.11'));
+		*/
+	/*var a=[1,2,3];
+	for(var i in a){
+		setTimeout(function(){
+			console.log(a[i]);
+		},0);
+	}
+
+
+	var divObj=document.createElement("p"); 
+
+	divObj.innerHTML='我是一个段落'; 
+	var first=document.body.firstChild;//得到页面的第一个元素 
+	document.body.insertBefore(divObj,first);//在得到的第一个元素之前插入 */
+
+
+
+	str=window.location.seach;
+	loc = str.substring(str.lastIndexOf('=')+1, str.length);
+	console.log(loc);
+	</script>
+</body>
+</html>

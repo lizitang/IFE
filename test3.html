@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <ul id='score'>
+
+    </ul>
+<script>
+    var data=[
+        ["2014010145","赵匡胤",59],
+        ["2014010148","刘邦", 100],
+        ["2014010146","李世民",85],
+        ["2014010147","朱元璋",85]
+    ];
+    (function () {
+        var list='';
+        var oList=document.getElementById('score');
+        function sortData(data) {
+            return data.sort(function(x,y){
+                return y[2]-x[2];
+            });
+        }
+        for(var i=0;i<data.length;i++){
+            list+='<li>'+data[i][0];
+        }
+
+        oList.innerHTML=list;
+    })();
+</script>
+</body>
+</html>

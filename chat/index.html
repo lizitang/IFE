@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>botchat</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+		    <h3>对话界面</h3>
+		</div>
+		<div class="content">
+			<div class="content-chat">
+				<div class="content-chat-header">
+					<span class="content-chat-header-left">Conversation</span>
+					<span class="content-chat-header-right">reset</span>
+				</div>
+				<div class="chat-window">
+					<div class="speak-window">
+						<div class="speak_box">
+							<div class="answer">
+								<div class="heard_img left"><img src="images/dglvyou.jpg"></div>
+								<div class="answer_text">
+									<p>Hey！您可以向我提问哦!</p>
+									<i></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="saying"><img src="images/saying.gif"/></div>
+					<div class="wenwen-footer">
+						<div class="wenwen_btn left" onClick="to_write()">
+							<img src="images/jp_btn.png">
+						</div>
+						<div class="wenwen_text left">
+							<div class="write_box">
+								<input type="text" class="left" onKeyUp="keyup()" placeholder="请输入关键字" />
+							</div>
+							<div class="circle-button" id="wenwen">
+								按住 说话
+							</div>
+						</div>
+						<div class="wenwen_help right">
+							<a href="http://www.dgtour.com.cn/yuyin/index.html">
+								<img src="images/help_btn.png">
+							</a>
+							<button onClick="up_say()" class="right">发送</button>
+						</div>
+						<div style="opacity:0;" class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<div class="content-log">
+				<div class="content-log-header">
+					<span>log正确内容</span>
+				</div>
+				<div class="content-log-window">
+					<div class="bot-content">
+						<div class="bot-conversation">
+							<div>Bot对话：</div>
+							<div>
+								<div>
+									<span>1.NLG是否合适</span>
+									<span class='btn yes'>是</span>
+									<span class="btn no">否</span>
+								</div>
+								<input type="text" placeholder="请输入理想的回复或建议" />
+								<div>
+									<div>
+										2.Act内容识别显示，格式如：
+									</div>
+									<span class="bot-act">offer(brand=美即，product=草本精华)</span>
+									<span class="alter-btn">修改</span>
+									<span class="alter-btn">X</span>
+								</div>
+							</div>
+						</div>
+						<div class="user-conversation">
+							<div>User对话</div>
+							<div>Act内容识别显示，格式如：</div>
+							<span class="user-request">request+price(category=面膜)</span>
+							<span class="alter-btn">修改</span>
+						</div>
+					</div>
+					<div class="scroll">
+
+					</div>
+				</div>
+			</div>
+			<div class="content-alter">
+				<div class="content-alter-header">
+					<span>修改对比</span>
+				</div>
+				<div class="bot-content ">
+					<div class='conversation-alter'>
+						<div class="alter">
+							<span>sentence:</span>
+							<span>XXX</span>
+						</div>
+						<div class='alter'>
+							<span>output识别：</span>
+							<span class="request">request(category=面膜)</span>
+						</div>
+						<div class="alter-after">
+							<span>修改后：</span>
+							<span class="request">request+price(category=面膜)</span>
+						</div>
+					</div>
+
+				</div>
+				<div class="scroll"></div>
+			</div>
+		</div>
+    </div>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>

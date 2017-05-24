@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>task4</title>
+    <style>
+        span{
+            display:inline-block;
+            margin:10px 5px;
+            padding:0 10px;
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            background: red;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- 点击"左侧入"，将input中输入的数字从左侧插入队列中；
+         点击"右侧入"，将input中输入的数字从右侧插入队列中；
+         点击"左侧出"，读取并删除队列左侧第一个元素，并弹窗显示元素中数值；
+         点击"右侧出"，读取并删除队列又侧第一个元素，并弹窗显示元素中数值；
+         点击队列中任何一个元素，则该元素会被从队列中删除-->
+    <input type="text" id='num'/>
+    <button id='left-in'>左侧入</button>
+    <button id='right-in'>右侧入</button>
+    <button id='left-out'>左侧出</button>
+    <button id='right-out'>右侧出</button>
+
+    <!--数字队列-->
+    <div id='quene'>
+
+    </div>
+    <script>
+        var oLeftin=document.getElementById('left-in');
+        var oRightin=document.getElementById('right-in');
+        var oLeftout=document.getElementById('left-out');
+        var oRightout=document.getElementById('right-out');
+
+        /*left-in*/
+
+        function leftIn(quene){
+            var num=document.getElementById('num').value;
+            if(checkInput(num)){
+                var span=document.createElement('span');
+                span.innerHTML=num;
+
+                var spanList=quene.childNodes;
+                quene.insertBefore(span,spanList[0]);
+            }
+
+
+        }
+        /*right-in*/
+        function rightIn(quene){
+            var num=document.getElementById('num').value;
+            if(checkInput(num)){
+                var span=document.createElement('span');
+                span.innerHTML=num;
+                quene.appendChild(span);
+            }
+        }
+        /*left-ont*/
+        function leftOut(quene){
+            var childs=quene.childNodes;
+            alert(childs[0].innerHTML);
+            quene.removeChild(childs[0]);
+        }
+        /*right=out*/
+        function rightOut(quene){
+            var childs=quene.childNodes;
+            alert(childs[childs.length-1].innerHTML);
+            quene.removeChild(childs[childs.length-1]);
+        }
+
+        /*输入验证，输入不能为空*/
+        function checkInput(num){
+            reg=/^-?[1-9]\d*$/;
+            if(num==''){
+                alert('输入不能为空');
+                return false;
+            }else if(!reg.test(num)){
+                alert('只能输入整数');
+                return false;
+            }else{
+                return true;
+            }
+        }
+        function init(){
+            var quene=document.getElementById('quene');
+            oLeftin.onclick=function(){
+                leftIn(quene);
+            }
+            oRightin.onclick=function(){
+                rightIn(quene);
+            }
+            oLeftout.onclick=function(){
+                leftOut(quene);
+            }
+            oRightout.onclick=function(){
+                rightOut(quene);
+            }
+            document.getElementById('quene').onclick=function(e){
+                e=e||window.event;
+                var t= e.target|| e.srcElement;
+                var tagName= t.tagName;
+                if(tagName=='SPAN'){
+                    quene.removeChild(t);
+                }
+            }
+
+        }
+        init();
+    </script>
+</body>
+</html>

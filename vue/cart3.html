@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table,tr,th,td{
+            border:1px solid #000;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <div id="cart">
+        <button>增加购物车</button>
+        <table id='tbl'>
+            <thead>
+            <tr>
+                <th></th>
+                <th>商品图片</th>
+                <th>商品信息</th>
+                <th>赠送</th>
+                <th>商品金额</th>
+                <th>商品数量</th>
+                <th>总金额</th>
+                <th>编辑</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="product in productList">
+                <td><input type="checkbox" @click="addCart(product)"/></td>
+                <td><img :src="product.productImg" width="100"/></td>
+                <td v-text="product.productName"></td>
+                <td>
+                    <ul>
+                        <li v-for="part in product.parts">{{part.partsName}}</li>
+                    </ul>
+                </td>
+                <td v-text="product.productPrice"></td>
+                <td>
+                    <button @click="minusProduct(product)">-</button>
+                    <input type="text" v-bind:value="product.productQuentity"/>
+                    <button @click="addProduct(product)">+</button>
+                </td>
+                <td v-text="product.productPrice*product.productQuentity"></td>
+                <td>
+                    <a href="#">删除</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <td colspan="6"><input type="checkbox" @click=""/>全选</td>
+            <td>总计:{{totalPrice}}</td>
+            <td><button>结账</button></td>
+            </tfoot>
+        </table>
+    </div>
+
+<script src="vue.min.js"></script>
+<script src="node_modules/.0.15.3@axios/dist/axios.min.js"></script>
+<script>
+    var vm=new Vue({
+        el:"#cart",
+        data:{
+            productList:[],
+            cartList:[],
+            totalPrice:0
+        },
+        methods:{
+            addCart:function(product){
+                var index=this.cartList.indexOf(product);
+                if(index==-1){
+                    this.cartList.push(product);
+                }else{
+                    this.cartList.splice(index,1);
+                }
+                this.countTotalPrice();
+            },
+            countTotalPrice:function(prod){
+                var _this=this;
+                this.totalPrice=0;
+                this.cartList.forEach(function(product){
+                    _this.totalPrice +=product.productPrice*product.productQuentity;
+                });
+            },
+            addProduct:function(prod){
+                prod.productQuentity++;
+                this.countTotalPrice();
+            },
+            minusProduct:function(prod){
+                if(prod.productQuentity==1){
+                    prod.productQuentity=1;
+                }else{
+                    prod.productQuentity--;
+                    this.countTotalPrice();
+                }
+
+            }
+            
+        },
+        mounted:function(){
+            var _this=this;
+            this.$nextTick(function(){
+                axios.get('cart.json').then(function(res){
+                    _this.productList=res.data.result.productList;
+                });
+            })
+
+        }
+    });
+</script>
+</body>
+</html>
