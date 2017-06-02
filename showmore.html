@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+	<body>
+		<ul>
+			<li>新闻列表数据1</li>
+			<li>新闻列表数据2</li>
+			<li>新闻列表数据3</li>
+			<li>新闻列表数据4</li>
+			<li>新闻列表数据5</li>
+			<li>新闻列表数据6</li>
+			<li>新闻列表数据7</li>
+			<li>新闻列表数据8</li>
+			<li>新闻列表数据9</li>
+			<li>新闻列表数据10</li>
+			<li id="more">点击加载更多</li></ul>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+			 <script>
+			     $(function () {
+			         var p = 1; //记录第几页
+			         $('#more').click(function () {
+			             p += 1; //下一页
+			 
+			 
+			             //===========模拟数据
+			             var s = '';
+			             for (var i = p * 10 + 1, j = p * 10 + 10; i <= j; i++) s += '<li>新闻列表数据' + i + '</li>';
+			             $(this).before(s);
+			             //===========模拟数据
+			/*
+			             //实际应用
+			             $.ajax({ url: 'xxxx.aspx', data: { page: p }, cache: false, dataType: 'html', success: function (html) {
+			                 $(this).before(html); //xxxx.aspx返回类似上面的模拟数据
+			              } });*/
+			             return false;
+			         });
+			     });
+			 </script>
+ 
+	</body>
+</html>
